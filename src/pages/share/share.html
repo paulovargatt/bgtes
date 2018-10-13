@@ -1,0 +1,55 @@
+<ion-header no-border >
+
+<ion-navbar color="danger" style="background-color: transparent" >
+  <ion-title style="color: white">{{ 'share' | translate}}</ion-title>
+</ion-navbar>
+</ion-header>
+
+<ion-content style="background: #42275a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #000,#42275a, #734b6d); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top,#000, #42275a, #734b6d);text-align: center" >
+
+
+
+
+
+
+
+ <ion-list no-lines style="background-color: transparent">
+
+
+
+  <ion-item  block clear (click)="share()"  style="background-color: transparent;color:white" >
+    <ion-avatar item-left>
+      <img class="shadow" src="{{art}}">
+    </ion-avatar>
+    <h2>{{title}}</h2>
+    <p style="color:azure">{{artist}}</p>
+  </ion-item>
+
+<br><hr>
+
+  <ion-item style="background-color: transparent;color:white" (click)="sharefb(art)">{{ 'shareOn' | translate}} Facebook</ion-item>
+  <ion-item style="background-color: transparent;color:white" (click)="sharewa(art)" >{{ 'shareOn' | translate}} Whatsapp</ion-item>
+
+
+</ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+  
+
+</ion-content>
+
+
+

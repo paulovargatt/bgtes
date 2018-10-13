@@ -1,0 +1,8 @@
+{
+  "name": "firespotify",
+  "app_id": "d1a85fcb",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}

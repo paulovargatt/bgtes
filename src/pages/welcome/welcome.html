@@ -1,0 +1,70 @@
+
+
+<ion-header  no-border >
+
+   <ion-navbar  color="danger" style="color:white;text-align: center">
+
+
+    
+      {{'welcomeFollow' | translate}}
+   
+
+
+   
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="background: #42275a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #000,#42275a, #734b6d); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top,#000, #42275a, #734b6d);text-align: center" >
+
+
+
+
+  <ion-row col-12 style="height: 20%" [hidden]="popularArtistsPlaylists.length > 0"></ion-row>
+
+<ion-row [hidden]="popularArtistsPlaylists.length > 0">
+<ion-col col-12 style="text-align: center">
+  <ion-spinner icon="lines" style="width:100px;height:100px;color:white;text-align: center"></ion-spinner>
+
+</ion-col>
+
+
+<ion-col col-2>
+
+</ion-col>
+
+<ion-col col-8 style="text-align: center;color: white">
+{{ 'welcome' | translate}}
+</ion-col>
+
+<ion-col col-2>
+  
+
+</ion-col>
+
+
+
+</ion-row>
+
+
+
+
+
+
+    
+<ion-row>
+
+  <ion-col  col-4 class="scroll-item" *ngFor="let artist of popularArtistsPlaylists " (click)="fav.toggleFollow(artist.$key)"   style="text-align: center;margin:0px;position: relative">
+        <ion-icon   [hidden]="!fav.isFollow(artist.$key)" class="heart" name="star"></ion-icon>
+<img [hidden]="fav.isFollow(artist.$key)" class="shadow" [src]="artist.image" style="width: 80px;height: 80px;color:azure">
+
+<img [hidden]="!fav.isFollow(artist.$key)" class="shadow" [src]="artist.image" style="width: 80px;height: 80px;color:azure;border-radius: 100px">
+<p style="color:azure">{{artist.name}}</p>
+    </ion-col>
+
+</ion-row>
+
+</ion-content>

@@ -1,0 +1,313 @@
+<ion-header no-border >
+
+   <ion-navbar color="danger">
+
+
+    <ion-title center>
+      {{'browse' | translate}}
+    </ion-title>
+
+ <ion-buttons end>
+      <button (click)="menu()" ion-button icon-only >
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+   
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="   background: #42275a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #000,#42275a, #734b6d); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top,#000, #42275a, #734b6d);text-align: center" >
+
+
+
+
+
+
+
+
+
+<ion-item style="background-color: transparent;color: azure;text-align: center" no-lines>{{'newSong' | translate}}</ion-item>
+
+
+
+<ion-scroll scrollX style="height:200px;">
+
+  <div [hidden]="playlists.length > 0" class="scroll-item"   style="text-align: center;margin:10px">
+<ion-icon style="font-size:5rem;color: white;text-align: center" name="musical-notes"></ion-icon>
+<p style="color:azure">Loading...</p>
+    </div>
+
+  <div class="scroll-item" *ngFor="let artist of newTracks | async;let i=index " (click)="play(i)" style="text-align: center;margin:10px;width: 120px">
+<img class="shadow" src="{{artist.albumArt}}" style="width: 120px;height: 120px;color:azure">
+<p style="color:azure;text-overflow: ellipsis;overflow: hidden">{{artist.name}}</p>
+<p style="color:darkgray;margin-top:-10px;color:azure;font-size: 80%">{{artist.artistName}}</p>
+    </div>
+
+
+</ion-scroll>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-item style="background-color: transparent;color: azure;text-align: center" no-lines>{{'trendingNow' | translate}}</ion-item>
+
+<ion-scroll scrollX style="height:200px;">
+    
+<div [hidden]="popularTracksPlaylists.length > 0" class="scroll-item"   style="text-align: center;margin:10px">
+<ion-icon style="font-size:5rem;color: white;text-align: center" name="musical-notes"></ion-icon>
+<p style="color:azure">Loading...</p>
+    </div>
+
+  <div class="scroll-item" *ngFor="let artist of popularTracksPlaylists ; let i=index;"  (click)="playpop(i)" style="text-align: center;margin:10px;width: 120px;">
+<img class="shadow" src="{{artist.art}}" style="width: 120px;height: 120px;color:azure">
+<p style="color:azure;text-overflow: ellipsis;overflow: hidden">{{artist.title}}</p>
+<p style="color:darkgray;margin-top:-10px;color:azure;font-size: 80%">{{artist.artistName}}</p>
+    </div>
+
+
+
+</ion-scroll>
+
+
+
+<ion-item style="background-color: transparent;color: azure;text-align: center" no-lines>{{'artists' | translate}}</ion-item>
+
+<ion-scroll scrollX style="height:200px;">
+    
+    <div [hidden]="popularArtistsPlaylists.length > 0" class="scroll-item"   style="text-align: center;margin:10px">
+<ion-icon style="font-size:5rem;color: white;text-align: center" name="musical-notes"></ion-icon>
+<p style="color:azure">Loading...</p>
+    </div>
+
+  <div class="scroll-item" *ngFor="let artist of popularArtistsPlaylists  "  (click)="gotoartist(artist.$key)"  style="text-align: center;margin:10px">
+
+<img class="shadow" src="{{artist.image}}" style="width: 120px;height: 120px;color:azure;border-radius: 100px">
+<p style="color:azure">{{artist.name}}</p>
+    </div>
+
+
+</ion-scroll>
+
+
+
+<ion-item style="background-color: transparent;color: azure;text-align: center" no-lines>{{'newAlbums' | translate}}</ion-item>
+
+<ion-scroll scrollX style="height:200px;">
+
+      <div [hidden]="loadedNewAlbum" class="scroll-item"   style="text-align: center;margin:10px">
+<ion-icon style="font-size:5rem;color: white;text-align: center" name="musical-notes"></ion-icon>
+<p style="color:azure">Loading...</p>
+    </div>
+
+
+  <div class="scroll-item" *ngFor="let artist of newAlbums | async " (click)="gotoalbum(artist.$key,artist.artist)" style="text-align: center;margin:10px;width: 120px">
+<img class="shadow" src="{{artist.image}}" style="width: 120px;height: 120px;color:azure">
+<p style="color:azure;text-overflow: ellipsis;overflow: hidden">{{artist.name}}</p>
+<p style="color:darkgray;margin-top:-10px;color:azure;font-size: 80%">{{artist.artistName}}</p>
+
+    </div>
+
+
+</ion-scroll>
+       
+
+
+
+<!--
+
+<ion-item style="background-color: transparent;color:azure;text-align: center" no-lines>New Singers</ion-item>
+
+<ion-scroll scrollX style="height:180px;">
+  <div class="scroll-item" *ngFor="let artist of newArtists | async " (click)="gotoartist(artist.$key)" style="text-align: center;margin:10px">
+<img src="{{artist.image}}" style="width: 120px;height: 120px;color:azure">
+<p style="color:azure">{{artist.name}}</p>
+    </div>
+
+
+</ion-scroll>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-item style="background-color: transparent;color: azure;text-align: center" no-lines>Popular Albums</ion-item>
+
+<ion-scroll scrollX style="height:200px;">
+    
+  <div class="scroll-item" *ngFor="let artist of popularAlbumsPlaylists  " (click)="gotoalbum(artist.$key,artist.artist)" style="text-align: center;margin:10px">
+
+<img src="{{artist.image}}" style="width: 120px;height: 120px;color:azure">
+<p style="color:azure">{{artist.name}}</p>
+<p style="color:darkgray;margin-top:-10px;color:azure">{{artist.artistName}}</p>
+  </div>
+
+
+</ion-scroll>
+-->
+
+
+
+
+
+<ion-item style="background-color: transparent;color: azure;text-align: center" no-lines>{{'newVideo' | translate}}</ion-item>
+
+
+
+<ion-scroll scrollX style="height:200px;">
+
+  <div [hidden]="videoPlaylists.length > 0" class="scroll-item"   style="text-align: center;margin:10px">
+<ion-icon style="font-size:5rem;color: white;text-align: center" name="musical-notes"></ion-icon>
+<p style="color:azure">Loading...</p>
+    </div>
+
+  <div class="scroll-item" *ngFor="let artist of videoPlaylists ;let i=index " (click)="playVideo(i)" style="text-align: center;margin:10px;width: 120px">
+<img class="shadow" src="{{artist.art}}" style="width: 120px;height: 120px;color:azure">
+<p style="color:azure;text-overflow: ellipsis;overflow: hidden">{{artist.title}}</p>
+<p style="color:darkgray;margin-top:-10px;color:azure;font-size: 80%">{{artist.artistName}}</p>
+    </div>
+
+
+</ion-scroll>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ion-item style="background-color: transparent;color: azure;text-align: center" no-lines>{{'trendingNowVideo' | translate}} </ion-item>
+
+<ion-scroll scrollX style="height:200px;">
+    
+<div [hidden]="popularVideosPlaylists.length > 0" class="scroll-item"   style="text-align: center;margin:10px">
+<ion-icon style="font-size:5rem;color: white;text-align: center" name="musical-notes"></ion-icon>
+<p style="color:azure">Loading...</p>
+    </div>
+
+  <div class="scroll-item" *ngFor="let artist of popularVideosPlaylists ; let i=index"  (click)="playpopVideo(i)" style="text-align: center;margin:10px;width: 120px">
+<img class="shadow" src="{{artist.art}}" style="width: 120px;height: 120px;color:azure">
+<p style="color:azure;text-overflow: ellipsis;overflow: hidden">{{artist.title}} </p>
+<p style="color:darkgray;margin-top:-10px;color:azure;font-size: 80%">{{artist.artistName}}</p>
+    </div>
+
+
+
+</ion-scroll>
+
+
+
+
+
+
+
+
+<ion-item *ngIf="tracks" no-lines style="background-color: transparent"></ion-item>
+
+ 
+  
+
+</ion-content>
+
+
+
+
+
+
+<ion-footer  style="background: #42275a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top,#000,#42275a); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #000,#42275a);border: none">
+
+      <div *ngIf="tracks" style="height: 3px;z-index: 9999;background-color:#cb356b"
+      [style.width.%]="musicservice.progress()"></div>
+       
+
+<ion-row *ngIf="tracks">
+
+  <ion-col col-8 (click)="player()">
+
+<button  ion-button clear block   style="color: white;">
+
+<span style="overflow: hidden;text-overflow: ellipsis">
+  
+{{tracks.title}} - {{tracks.artist}}
+
+</span>
+
+</button>
+
+
+
+
+  </ion-col>
+
+  <ion-col col-2 style="text-align: right">
+
+<!-- <button (click)="prevTrack(selectedTrack)" ion-button color="dark" icon-only small > <ion-icon name="skip-backward"></ion-icon></button>
+-->
+         <audio-track-play light [audioTrack]="tracks">
+          </audio-track-play>
+
+  </ion-col>
+
+    <ion-col col-2 style="text-align: right">
+
+ <button (click)="next()"  ion-button clear style="color:white" icon-only  > <ion-icon name="skip-forward"></ion-icon></button>
+ 
+
+  </ion-col>
+</ion-row>
+
+
+
+
+         
+
+
+         
+
+
+  
+ 
+
+
+
+
+</ion-footer>

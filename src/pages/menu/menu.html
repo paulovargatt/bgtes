@@ -1,0 +1,52 @@
+<ion-header no-border >
+
+   <ion-navbar color="danger">
+
+
+    <ion-title center>
+      {{'menu' | translate}}
+    </ion-title>
+
+   
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content style="background: #42275a; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #000,#42275a, #734b6d); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top,#000, #42275a, #734b6d);ext-align: center" >
+
+<ion-list no-lines>
+<ion-item  style="background-color: transparent;color:white">
+</ion-item>
+
+
+<ion-item (click)="langs()" style="background-color: transparent;color:white">
+<h2>{{'language' | translate}}</h2>
+</ion-item>
+<ion-item (click)="about()" style="background-color: transparent;color:white">
+<h2>{{'about' | translate}}</h2>
+</ion-item>
+<ion-item (click)="contact()" style="background-color: transparent;color:white">
+<h2>{{'contact' | translate}}</h2>
+</ion-item>
+<ion-item (click)="logout()" style="background-color: transparent;color:white">
+<h2>{{'logout' | translate}}</h2>
+</ion-item>
+
+
+
+</ion-list>
+
+ 
+  
+
+</ion-content>
+<ion-footer style="text-align: center">
+  <img (click)="followfb()" style="width:30px;margin: 10px" src="assets/facebook.png">
+
+<img (click)="followig()" style="width:30px;margin: 10px" src="assets/instagram.png">
+
+<br><br><br><br><br>
+</ion-footer>
+
